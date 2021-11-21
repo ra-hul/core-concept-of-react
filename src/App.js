@@ -29,15 +29,26 @@ function ExternalUsers() {
 
 
 
+
   return (
     <div >
       <h2>External Users:</h2>
       {
-        users.map(user => <li>{user.name}</li>)
+        users.map(user => <Users name={user.name} email={user.email}> </Users>)
       }
     </div>
   );
 }
+function Users(props) {
+  return (
+    <div className='product'>
+      <h2>name: {props.name}</h2>
+      <p>email: {props.email}</p>
+    </div>
+
+  )
+}
+
 
 // one way
 
