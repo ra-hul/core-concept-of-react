@@ -1,47 +1,48 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
-  // dynamically creating components 
-
-  // making array of objects
-
-  const products = [
-    { name: 'mobile', price: 15000 },
-    { name: 'watch', price: 5000 },
-    { name: 'laptop', price: 55000 },
-    { name: 'shoes', price: 1500 }
-  ]
-
-  // dynamically sending the request for showing data in the screen
   return (
     <div className="App">
-      {
-        products.map(product => <Product name={product.name} price={product.price}></Product>)
-      }
-
-      {/* Manually creating components */}
-
-      {/* <Product name="mobile" price="15000"></Product>
-      <Product name="Laptop" price="55000"></Product>
-      <Product name="watch" price="5000"></Product>
-      <Product name="shoes" price="1500"></Product> */}
+      <Counter></Counter>
 
     </div>
   );
 }
 
-function Product(props) {
+// will show a counter with a button if we increase that the number of counter will increase and counter value will decrease
+// second way , optimized
 
-  const productStyle = {
-    border: '2px blue solid'
-  }
+function Counter() {
+
+  const [count, setCount] = useState(10);
+  const handleIncrease = () => { setCount(count + 1) };
+  const handleDecrease = () => { setCount(count - 1) };
+
+
   return (
-    <div className="product" style={productStyle}>
-      <h1>Name: {props.name}</h1>
-      <h4>Price: {props.price}</h4>
+    <div >
+      <h1>Count: {count}</h1>
+      <button onClick={handleIncrease}>Increase</button>
+      <button onClick={handleDecrease}>Decrease</button>
     </div>
-  )
+  );
 }
+
+// one way
+
+//  function Counter() {
+
+//   const [count, setCount] = useState(10);
+//   const handleIncrease = () => {
+//     const newCount = count + 1;
+//     setCount(newCount);
+//   };
+
+//   const handleDecrease = () => {
+//     const preCount = count - 1;
+//     setCount(preCount);
+//   }
 
 export default App;
